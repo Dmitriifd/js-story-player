@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+    background-color: #262626;
+}
+
+.player {
+    width: 370px;
+    margin: 0 auto;
+}
+
+.timeline {
+	display: flex;
+	margin: 5px 0;
+    cursor: pointer;
+}
+
+.timeline-chunk {
+	background-color: #717171;
+	height: 3px;
+	width: 100%;
+	border-radius: 2px;
+}
+
+.timeline-chunk + .timeline-chunk {
+	margin-left: 2px;
+}
+
+.timeline-chunk-inner {
+	height: inherit;
+	border-radius: inherit;
+    background-color: #fff;
+}
+
+.player-content-wrapper {
+    position: relative;
+}
+
+.player-chunk {
+    display: none;
+}
+
+.timeline-chunk--active > .timeline-chunk-inner,
+.timeline-chunk--active ~ .timeline-chunk > .timeline-chunk-inner {
+    width: 0;
+}
+
+.player-chunk--active {
+    display: block;
+}
+
+.player-img {
+    max-width: 100%;
+}
+
+.player-chunk-switcher  {
+    height: 100%;
+    width: 30%;
+    background-color: rgba(196, 107, 255, 0.3);
+    position: absolute;
+}
+
+.player-chunk-next {
+    top: 0;
+    right: 0;
+}
+
+.player-chunk-prev {
+    top: 0;
+    left: 0;
+}
