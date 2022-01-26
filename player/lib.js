@@ -32,23 +32,26 @@ function initPlayer(params) {
     }
 
     target.innerHTML = generatePlayerLayout(timelineChunks, playerChunks);
-    target.querySelector('.player-chunk-prev').addEventListener('click', switchToPrevChunck);
+    target.querySelector('.player-chunk-prev').addEventListener('click', switchToPrevChunk);
     target.querySelector('.player-chunk-next').addEventListener('click', switchToNextChunk);
 
     runChunckSwitching(params.delayPerSlide || 1, 1);
 
-    return target.querySelector('.player')
+    return target.querySelector('.player');
 
-    function switchToPrevChunck() {
-        moveClass('player-chunk--active', 'previousElementSibling')
-        moveClass('timeline-chunk--active', 'previousElementSibling', (el) => {
-            const inner = el.querySelector('.timeline-chunk-inner');
-            let w = parseFloat(inner.style.width) || 0;
+    function switchToPrevChunk() {
+        const prev = moveClass('timeline-chunk--active', 'previousElementSibling', (el) => {
+            const
+                inner = el.querySelector('.timeline-chunk-inner'),
+                w = parseFloat(inner.style.width) || 0;
+
             el.querySelector('.timeline-chunk-inner').style.width = '';
             return w <= 20;
         });
 
-        
+        if (prev) {
+            moveClass('player-chunk--active', 'previousElementSibling');
+        }
     }
     function switchToNextChunk() {
         const el = moveClass('timeline-chunk--active', 'nextElementSibling')
