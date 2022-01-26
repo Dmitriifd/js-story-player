@@ -4,36 +4,51 @@ initPlayer({
 		{
 			url: 'img/1.jpg',
 			alt: 'img1',
+            filter: ['blur(2px)'],
 			overlays: [ 
                 { 
                     type: 'text', 
                     value: 'Привет',
+                    classes: ['watercolor'],
                     styles: {
-                        color: 'orange',
                         'font-size': '60px',
-                        'text-shadow': '1px 1px #000',
-                        top: '60%',
-                        left: '30%',
-                        'transform': 'rotate(-30deg)',
-                        animation: 'scale 2s infinite ease-in-out',
+                        // color: 'orange',
+                        // 'text-shadow': '1px 1px #000',
+                        // 'transform': 'rotate(-30deg)',
+                        top: '30%',
+                        left: '20%',
+                        // animation: 'scale 2s infinite ease-in-out',
                     }
                 },
                 {
-                    type: 'text',
-                    value: 'Привет мир',
+                    type: 'question',
+                    question: 'Какой-то вопрос?',
+                    variants: [
+                        'Да',
+                        'Нет'
+                    ],
                     styles: {
-                        color: 'orange',
-                        'font-size': '20px',
-                        'text-shadow': '1px 1px #000',
-                        bottom: '10%',
-                        right: '30%',
-                        'transform': 'rotate(90deg)',
-                        animation: 'scale 6s infinite ease-in-out',
+                        top: '60%',
+                        left: '30%',
                     }
                 },
+                
             ],
 		},
-		{ url: 'img/2.jpg', alt: 'img2' },
+        {
+            url: 'img/2.jpg', alt: 'img2', overlays: [
+                {
+                    type: 'text',
+                    value: 'Привет мир',
+                    classes: ['watercolor'],
+                    styles: {
+                        'font-size': '20px',
+                        top: '50%',
+                        left: '10%',
+                    }
+                },
+
+            ], },
 		{ url: 'img/3.jpg', alt: 'img3' },
 		{ url: 'img/4.jpg', alt: 'img4' },
 	],

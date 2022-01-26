@@ -65,9 +65,15 @@ function initPlayer(params) {
         `;
     }
     function generatePlayerChunk(slide, isFirst) {
+        const style = [];
+
+        if (slide.filter) {
+            style.push(`filter: ${slide.filter.join(' ')}`);
+        }
+
         return `
             <div class="player-chunk ${isFirst ? 'player-chunk--active' : ''}">
-                <img class="player-img" src="${slide.url}" alt="${slide.alt || ''}">
+                <img class="player-img" src="${slide.url}" alt="${slide.alt || ''}" style="${style.join(';')}">
                 ${generateOverlays(slide)}
             </div>
         `;
@@ -80,10 +86,11 @@ function initPlayer(params) {
         let res = '';
 
         for (const el of slide.overlays) {
+            const classes = el.classes !== undefined ? el.classes.join(' ') : '';
             const styles = (el.styles !== undefined ? Object.entries(el.styles) : [])
                 .map((el) => el.join(':'))
                 .join(';')
-            res += `<div class="player-chunck-overlay" style="${styles}">${renderOverlay(el)}</div>`;
+            res += `<div class="player-chunck-overlay ${classes}" style="${styles}">${renderOverlay(el)}</div>`;
         }
 
         return res;
@@ -94,6 +101,17 @@ function initPlayer(params) {
             }
             if (overlay.type === 'img') {
                 return `<img src="${overlay.value}" alt="" />`
+            }
+            if (overlay.type === 'question') {
+                return `
+                    <div class="question">
+                        ${overlay.question}
+                        <div class="question-answers">
+                            <button value="1">${overlay.variants[0] || 'Да'}</button>
+                            <button value="2">${overlay.variants[1] || 'Нет'}</button>
+                        </div>
+                    </div>
+                `
             }
             return '';
         }
@@ -140,7 +158,6 @@ function initPlayer(params) {
                 return;
             }
             active.style.width = String(w + step) + '%';
-            console.log((time * 1000) * (step / 100));
         }, (time * 1000) * (step / 100));
     }
     
