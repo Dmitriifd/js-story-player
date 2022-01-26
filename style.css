@@ -36,7 +36,13 @@ body {
 }
 
 .player-chunk {
+    position: relative;
     display: none;
+}
+
+.player-chunck-overlay {
+    position: absolute;
+    user-select: none;
 }
 
 .timeline-chunk--active > .timeline-chunk-inner,
@@ -57,6 +63,7 @@ body {
     width: 30%;
     background-color: rgba(196, 107, 255, 0.2);
     position: absolute;
+    z-index: 1;
 }
 
 .player-chunk-next {
@@ -67,4 +74,14 @@ body {
 .player-chunk-prev {
     top: 0;
     left: 0;
+}
+
+@keyframes scale {
+    50% {
+        transform: scale(2);
+    }
+    100% {
+        transform: scale(1);
+    }
+
 }
