@@ -92,7 +92,7 @@ function initPlayer(params) {
             const classes = el.classes !== undefined ? el.classes.join(' ') : '';
             const styles = (el.styles !== undefined ? Object.entries(el.styles) : [])
                 .map((el) => el.join(':'))
-                .join(';')
+                .join(';');
             res += `<div class="player-chunck-overlay ${classes}" style="${styles}">${renderOverlay(el)}</div>`;
         }
 
