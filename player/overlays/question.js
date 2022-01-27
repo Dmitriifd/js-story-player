@@ -13,7 +13,19 @@ export class Question extends Overlay {
      */
     variants = ['Да', 'Нет'];
 
-    /** @override */
+    /**
+   * @override 
+   * @param {{
+   *   question: string,
+   *   variants?: string[],
+   *   alt?: string,
+   *   classes?: string[],
+   *   styles?: Object<string, string>,
+   * }=} [params] - параметры наложения:
+   * 
+   * 1. question -  Текст вопроса
+   * 2. [variants] - Варианты ответа
+   */
     constructor(params) {
         super(params);
         
@@ -24,6 +36,10 @@ export class Question extends Overlay {
         }
 
         this.variants = params?.variants ?? this.variants;
+
+        if (this.variants.length === 0) {
+            throw new Error('There is should be at least variant of answering');
+        }
     }
 
     /** @override */
@@ -32,10 +48,9 @@ export class Question extends Overlay {
 
         el.innerHTML = `
             <div class="question">
-                ${overlay.question}
+                ${this.question}
                 <div class="question-answers">
-                    <button value="1">${overlay.variants[0] || 'Да'}</button>
-                    <button value="2">${overlay.variants[1] || 'Нет'}</button>
+                    ${this.variants.map((label, i) => `<button value="${i}">${label}</button>`).join(' ')}
                 </div>
             </div>
         `;

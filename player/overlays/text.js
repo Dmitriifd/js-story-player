@@ -7,7 +7,18 @@ export class Text extends Overlay {
      */
     text;
 
-   /** @override */
+    /**
+   * @override 
+   * @param {{
+   *   text: string,
+   *   alt?: string,
+   *   classes?: string[],
+   *   styles?: Object<string, string>,
+   * }=} [params] - параметры наложения:
+   * 
+   * 1. text - Текст содержимое наложения
+   * 2. [alt] - Альтернативный текст изображения
+   */
     constructor(params) {
         super(params);
         this.text = params?.text;

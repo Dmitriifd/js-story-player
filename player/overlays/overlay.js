@@ -25,7 +25,11 @@ export class Overlay {
     *   type: string,
     *   classes?: string[],
     *   styles?: Object<string, string>
-    * }=} [params] - параметры наложения
+    * }=} [params] - параметры наложения:
+    * 
+    * 1. type - тип создоваемого наложения
+    * 2. [classes] - список дополнительных классов
+    * 3. [styles] - список дополнительных стилей
     */
     constructor(params) {
         this.type = params.type
