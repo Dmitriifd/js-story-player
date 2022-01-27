@@ -1,4 +1,10 @@
-class Overlay {
+export class Overlay {
+    /**
+     * Тип наложения
+     * @type {string}
+     */
+    type;
+
     /**
      * Список дополнительных классов для наложения
      * @type {string[]}
@@ -16,11 +22,17 @@ class Overlay {
      * 
     * Словарь дополнительных стилей для наложения
     * @param {{
-    *   classes?: string[]
+    *   type: string,
+    *   classes?: string[],
     *   styles?: Object<string, string>
     * }=} [params] - параметры наложения
     */
     constructor(params) {
+        this.type = params.type
+        if (typeof this.type !== 'string') {
+            throw new TypeError('A type of the created is not specified')
+        }
+
         this.classes = params?.classes ?? this.classes;
         if (!Array.isArray(this.classes)) {
             throw new TypeError('Additional classes can be defined only as array')
