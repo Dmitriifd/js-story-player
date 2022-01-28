@@ -72,6 +72,10 @@
 }
 
 .watercolor {
+    display: flex;
+    align-items: center;
+    min-height: 4em;
+
     background-color: #000000;
     color: wheat;
     text-align: center;

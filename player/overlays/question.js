@@ -31,7 +31,7 @@ export class Question extends Overlay {
         
         this.question = params?.question;
 
-        if (typeof this.variants !== 'string') {
+        if (typeof this.question !== 'string') {
             throw new ReferenceError('A quistion text to the created overlay is not specified');
         }
 
@@ -54,6 +54,15 @@ export class Question extends Overlay {
                 </div>
             </div>
         `;
+
+        el.querySelector('.question-answers').addEventListener('click', (e) => {
+            
+            if (e.target.nodeName !== 'BUTTON') {
+                return;
+            } 
+            alert(e.target.value)
+        });
+
         return el;
     }
 

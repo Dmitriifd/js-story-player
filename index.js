@@ -1,27 +1,28 @@
-initPlayer({
-	target: '.my-player',
-	slides: [
-		{
-			url: 'img/1.jpg',
-			alt: 'img1',
+import Player from './player/player.js';
+
+new Player({
+    target: '.my-player',
+    delayPerSlide: 5,
+    
+    slides: [
+        {
+            url: 'img/1.jpg',
+            alt: 'img1',
             filter: ['blur(2px)'],
-			overlays: [ 
-                { 
-                    type: 'text', 
-                    value: 'Привет',
+
+            overlays: [
+                {
+                    type: 'Text',
+                    text: 'Привет',
                     classes: ['watercolor'],
                     styles: {
                         'font-size': '60px',
-                        // color: 'orange',
-                        // 'text-shadow': '1px 1px #000',
-                        // 'transform': 'rotate(-30deg)',
                         top: '30%',
                         left: '20%',
-                        // animation: 'scale 2s infinite ease-in-out',
-                    }
+                    },
                 },
                 {
-                    type: 'question',
+                    type: 'Question',
                     question: 'Какой-то вопрос?',
                     variants: [
                         'Да',
@@ -32,14 +33,16 @@ initPlayer({
                         left: '30%',
                     }
                 },
-                
+
             ],
-		},
+        },
         {
-            url: 'img/2.jpg', alt: 'img2', overlays: [
+            url: 'img/2.jpg', 
+            alt: 'img2', 
+            overlays: [
                 {
-                    type: 'text',
-                    value: 'Привет мир',
+                    type: 'Text',
+                    text: 'Привет мир',
                     classes: ['watercolor'],
                     styles: {
                         'font-size': '20px',
@@ -48,9 +51,9 @@ initPlayer({
                     }
                 },
 
-            ], },
-		{ url: 'img/3.jpg', alt: 'img3' },
-		{ url: 'img/4.jpg', alt: 'img4' },
-	],
-	delayPerSlide: 5,
+            ],
+        },
+        { url: 'img/3.jpg', alt: 'img3' },
+        { url: 'img/4.jpg', alt: 'img4' },
+    ]
 });
